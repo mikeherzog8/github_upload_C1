@@ -68,18 +68,25 @@ new_loan = {
     "future_value": 1000,
 }
 
-loan_price = 800
-remaining_months = 12
-future_value = 1000
-annual_discount_rate = 0.2
+loan_price = loan.get('loan_price')
+future_value = loan.get('future_value')
+remaining_months = loan.get('remaining_months')
+discount_rate = 0.2
 
+present_value = future_value/(1+discount_rate/12)**remaining_months
+print(f"Present Value is ${present_value: .2f}")
 
-present_value = future_value / (1+ annual_discount_rate/12)**remaining_months
+def calculate_present_value(future_value, remaining_months, annual_discount_rate):
+    present_value = future_value / (1 + (annual_discount_rate/ 12)) ** remaining_months
+    return present_value
 
-if present_value > loan_price:
-    print("The loan is worth at least the cost to buy it. Go for it!")
-elif present_value < loan_price:
-    print("The loan is too expensive and not worth it!")
+annual_discount_rate = 0.20
+present_value = calculate_present_value(
+    new_loan["future_value"],
+    new_loan["remaining_months"],
+    annual_discount_rate)
+
+print(f"The present value of the loan is: ${present_value: .2f}")   
 
 
 
