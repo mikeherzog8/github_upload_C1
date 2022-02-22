@@ -168,8 +168,8 @@ print("Writing the data to a CSV file...")
 with open(csvpath, "w") as csvfile:
     csvwriter = csv.writer(csvfile, delimiter=",")
     csvwriter.writerow(header)
-    for item in inexpensive_loans:
-        csvwriter.writerow(item.values())
+    for loan in inexpensive_loans:
+        csvwriter.writerow(loan.values())
 
-print(item.values())
-print(item.keys())
+print(loan.values())
+print(loan.keys())
